@@ -45,14 +45,25 @@ void incertionSort(int n, int vet[]){
 
 
 void quickSort(int menor, int maior, int vet[]){
+
     if(menor < maior){
         int p = parte(menor, maior, vet);
-        quickSort(vet, menor, p - 1);
-        quickSort(vet, p + 1, maior);
-
+        quickSort(menor, p - 1, vet);
+        quickSort(p + 1, maior, vet);
     }
 }
 
-int parte(int vet[], int menor, int maior){
+int parte(int menor, int maior, int vet[]){
     
+    int pi = vet[maior];
+    int i = (menor - 1);
+
+    for(int j = menor; j <= maior - 1; j++){
+        if(vet[j] < pi){
+            i++;
+            swap(&vet[i], &vet[j]);
+        }
+    }
+    swap(&vet[i + 1], &vet[maior]);
+    return(i + 1);
 }
