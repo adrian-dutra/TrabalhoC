@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<time.h>
 #include "algoritmos.h"
-clock_t start, end;
+/*clock_t start, end;
 double tempo_selection, tempo_insertion, tempo_merge, tempo_quick;
 
 void swap(int* a, int* b){
@@ -179,15 +179,15 @@ int* criaVetorDesordenado(int n) {
     
     return vet;
 
-}
+}*/
 
 int menuEscolhas(){
     int escolha;
     int n;
-    printf("Escolha com quantos numeros o vetor sera criado:");
-    printf("1 - 100");
-    printf("2 - 1000");
-    printf("3 - 10000");
+    printf("Escolha com quantos numeros o vetor sera criado:\n");
+    printf("1 - 100\n");
+    printf("2 - 1000\n");
+    printf("3 - 10000\n");
     scanf("%d", &escolha);
     switch (escolha)
     {
@@ -201,11 +201,11 @@ int menuEscolhas(){
         n =10000;
         break; 
     default:
-        printf("voce deve esolher entre 1 e 3 !!!");
+        printf("voce deve esolher entre 1 e 3 !!!\n");
         break;
     }
     
-    return n
-
+    return n;
+    
 }
 
