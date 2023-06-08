@@ -133,7 +133,7 @@ int parte(int menor, int maior, int vet[]){
 }
 
 
-void criaVetorCrescente(int n, int vet[]) {
+void criaVetorCrescente(int n, int* vet) {
     int i = 0;
     int num = 1;
     do {
@@ -188,7 +188,7 @@ int menuEscolhas(){
     printf("1 - 100");
     printf("2 - 1000");
     printf("3 - 10000");
-    scanf("%d", escolha);
+    scanf("%d", &escolha);
     switch (escolha)
     {
     case 1:

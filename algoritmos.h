@@ -5,5 +5,6 @@ void merge(int l, int m, int r, int vet[]);
 void mergeSort(int l, int r, int vet[]);
 void quickSort(int menor, int maior, int vet[]);
 int parte(int menor, int maior, int vet[]);
-int* criaVetorCrescente(int n);
+int* criaVetorCrescente(int n, int* vet);
 int* criaVetorDecrescente(int n);
+int menuEscolhas();

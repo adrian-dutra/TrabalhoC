@@ -12,7 +12,7 @@ int main(){
             printf("0 - sair\n");
             printf("==================================\n");
             printf("escolha qual algoritmo quer rodar:\n");
-            scanf("%d", escolha);
+            scanf("%d", &escolha);
        
        switch (escolha)
        {
@@ -20,7 +20,7 @@ int main(){
    
                int tamanho = menuEscolhas();
                int vetCrescente[tamanho];
-               criaVetorCrescente(tamanho);
+               criaVetorCrescente(tamanho, vetCrescente);
             
             for (int i = 0; i < tamanho; i++)
             {
