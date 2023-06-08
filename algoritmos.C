@@ -133,16 +133,14 @@ int parte(int menor, int maior, int vet[]){
 }
 
 
-int* criaVetorCrescente(int n) {
+void criaVetorCrescente(int n, int vet[]) {
     int i = 0;
-    int* vet = (int*)malloc(n * sizeof(int));
     int num = 1;
     do {
         vet[i] = num;
         num++;
         i++;
     } while (i != n);
-    return vet;
 }
 
 int* criaVetorDecrescente(int n){

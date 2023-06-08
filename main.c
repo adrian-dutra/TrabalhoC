@@ -17,9 +17,10 @@ int main(){
        switch (escolha)
        {
             case 1:
-            int* vetCrescente;
-            int tamanho = menuEscolhas();
-            vetCrescente = criaVetorCrescente(tamanho);
+   
+               int tamanho = menuEscolhas();
+               int vetCrescente[tamanho];
+               criaVetorCrescente(tamanho);
             
             for (int i = 0; i < tamanho; i++)
             {
