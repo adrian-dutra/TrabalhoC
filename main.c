@@ -481,9 +481,16 @@ int menuEscolhas()
     int n;
 
     printf("Escolha com quantos numeros o vetor será criado:\n");
-    printf("1 - 1000\n");
-    printf("2 - 5000\n");
-    printf("3 - 10000\n");
+    printf("1  - 1000\n");
+    printf("2  - 3000\n");
+    printf("3  - 5000\n");
+    printf("4  - 7000\n");
+    printf("5  - 10000\n");
+    printf("6  - 13000\n");
+    printf("7  - 15000\n");
+    printf("8  - 18000\n");
+    printf("9  - 20000\n");
+    printf("10 - 22000\n");
     scanf("%d", &escolha);
 
     switch (escolha)
@@ -492,13 +499,34 @@ int menuEscolhas()
         n = 1000;
         break;
     case 2:
-        n = 5000;
+        n = 3000;
         break;
     case 3:
-        n = 10000;
+        n = 5000;
         break;
+    case 4:
+    n = 7000;
+    break;
+    case 5:
+    n = 10000;
+    break;
+     case 6:
+    n = 13000;
+    break;
+     case 7:
+    n = 15000;
+    break;
+     case 8:
+    n = 18000;
+    break;
+     case 9:
+    n = 20000;
+    break;
+     case 10:
+    n = 22000;
+    break;
     default:
-        printf("Você deve escolher entre 1 e 3!\n");
+        printf("Você deve escolher entre 1 e 10!\n");
         break;
     }
 
