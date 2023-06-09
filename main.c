@@ -6,6 +6,7 @@ clock_t start, end;
 double tempo_insertion, tempo_merge, tempo_quick;
 double tempo_selection_Crescente, tempo_selection_Decrescente, tempo_selection_Desordenado,tempo_selection_Aleatorio;
 double tempo_inserction_Crescente, tempo_insertion_Decrescente, tempo_insertion_Desordenado,tempo_insertion_Aleatorio;
+double tempo_merge_Crescente, tempo_merge_Decrescente, tempo_merge_Desordenado,tempo_merge_Aleatorio;
 
 int menuEscolhas();
 void criaVetorCrescente(int n, int *vet);
@@ -15,6 +16,8 @@ void criaVetorAleatorio(int n, int *vet);
 void swap(int *a, int *b);
 void selectionSort(int n, int vet[]);
 void insertionSort(int n, int vet[]);
+void merge(int l, int m, int r, int vet[]);
+void mergeSort(int l, int r, int vet[]);
 
 int main()
 {
@@ -258,6 +261,105 @@ int main()
             }
             break;
 
+        case 4:
+        if (vetCrescente != NULL)
+            {
+                start = clock();
+                mergeSort(0, tamanho - 1, vetCrescente);
+                end = clock();
+                tempo_merge_Crescente = ((double)(end - start)) / CLOCKS_PER_SEC;
+                /*for (int i = 0; i < tamanho; i++)
+                {
+                    printf("%d\n", vetCrescente[i]);
+                }*/
+                printf("\n");
+                printf("-----------------------------------------------------------------");
+                printf("\n");
+                printf("\n");
+                printf("TEMPO DO MERGE SORT VETOR CRESCENTE ORDENADO: %lf\n", tempo_merge_Crescente);
+                printf("\n");
+                printf("-----------------------------------------------------------------");
+                printf("\n");
+                printf("\n");
+            }
+            else
+            {
+                printf("Erro: o vetor não foi criado! Use a opcao 1 do menu !\n");
+            }
+            if (vetDecrescente != NULL)
+            {
+                start = clock();
+                mergeSort(0, tamanho - 1, vetDecrescente);
+                end = clock();
+                tempo_merge_Decrescente = ((double)(end - start)) / CLOCKS_PER_SEC;
+                /*for (int i = 0; i < tamanho; i++)
+                {
+                    printf("%d\n", vetDecrescente[i]);
+                }*/
+                printf("\n");
+                printf("-----------------------------------------------------------------");
+                printf("\n");
+                printf("\n");
+                printf("TEMPO DO MERGE SORT VETOR DECRESCENTE ORDENADO: %lf\n", tempo_merge_Decrescente);
+                printf("\n");
+                printf("-----------------------------------------------------------------");
+                printf("\n");
+                printf("\n");
+            }
+            else
+            {
+                printf("Erro: o vetor não foi criado! Use a opcao 1 do menu !\n");
+            }
+            if (vetDesordenado != NULL)
+            {
+                start = clock();
+                mergeSort(0, tamanho - 1, vetDesordenado);
+                end = clock();
+                tempo_merge_Desordenado = ((double)(end - start)) / CLOCKS_PER_SEC;
+                /*for (int i = 0; i < tamanho; i++)
+                {
+                    printf("%d\n", vetDesordenado[i]);
+                }*/
+                printf("\n");
+                printf("-----------------------------------------------------------------");
+                printf("\n");
+                printf("\n");
+                printf("TEMPO DO MERGE SORT VETOR LEVEMENTE DESORDENADO: %lf\n", tempo_merge_Desordenado);
+                printf("\n");
+                printf("-----------------------------------------------------------------");
+                printf("\n");
+                printf("\n");
+            }
+            else
+            {
+                printf("Erro: o vetor não foi criado! Use a opcao 1 do menu !\n");
+            }
+             if (vetAleatorio != NULL)
+            {
+                start = clock();
+                mergeSort(0, tamanho - 1, vetAleatorio);
+                end = clock();
+                tempo_merge_Aleatorio = ((double)(end - start)) / CLOCKS_PER_SEC;
+               /* for (int i = 0; i < tamanho; i++)
+                {
+                    printf("%d\n", vetAleatorio[i]);
+                }*/
+                printf("\n");
+                printf("-----------------------------------------------------------------");
+                printf("\n");
+                printf("\n");
+                printf("TEMPO DO MERGE SORT VETOR ALEATORIO: %lf\n", tempo_merge_Aleatorio);
+                printf("\n");
+                printf("-----------------------------------------------------------------");
+                printf("\n");
+                printf("\n");
+            }
+            else
+            {
+                printf("Erro: o vetor não foi criado! Use a opcao 1 do menu !\n");
+            }
+            break;
+
         default:
             printf("Erro: sua escolha deve ser entre 0 e 4!\n");
             break;
@@ -376,5 +478,58 @@ void insertionSort(int n, int vet[]){
             j = j -1;
         }
         vet[j + 1] = chave;
+    }
+}
+
+void merge(int l, int m, int r, int vet[]){
+
+    int i, j, k;
+    int n1 = m - l + 1;
+    int n2 = r - m;
+    int L[n1], R[n2];
+
+    for (i = 0; i < n1; i++)
+        L[i] = vet[l + i];
+    for (j = 0; j < n2; j++)
+        R[j] = vet[m + 1 + j];
+
+    i = 0;
+    j = 0;
+    k = l;
+
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            vet[k] = L[i];
+            i++;
+        }
+        else {
+            vet[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+
+    while (i < n1) {
+        vet[k] = L[i];
+        i++;
+        k++;
+    }
+
+    while (j < n2) {
+        vet[k] = R[j];
+        j++;
+        k++;
+    }
+}
+
+void mergeSort(int l, int r, int vet[]) {
+    
+    if (l < r) {
+        int m = l + (r - l) / 2;
+
+        mergeSort(l, m, vet);
+        mergeSort(m + 1, r, vet);
+
+        merge(l, m, r, vet);
     }
 }
