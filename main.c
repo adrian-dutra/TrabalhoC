@@ -5,6 +5,7 @@
 clock_t start, end;
 double tempo_insertion, tempo_merge, tempo_quick;
 double tempo_selection_Crescente, tempo_selection_Decrescente, tempo_selection_Desordenado,tempo_selection_Aleatorio;
+double tempo_inserction_Crescente, tempo_insertion_Decrescente, tempo_insertion_Desordenado,tempo_insertion_Aleatorio;
 
 int menuEscolhas();
 void criaVetorCrescente(int n, int *vet);
@@ -13,6 +14,7 @@ void criaVetorLevementeDesordenado(int n, int *vet);
 void criaVetorAleatorio(int n, int *vet);
 void swap(int *a, int *b);
 void selectionSort(int n, int vet[]);
+void insertionSort(int n, int vet[]);
 
 int main()
 {
@@ -145,7 +147,7 @@ int main()
                 printf("-----------------------------------------------------------------");
                 printf("\n");
                 printf("\n");
-                printf("TEMPO DO SELECTION SORT VETOR LEVEMENTE DESORDENADO: %lf\n", tempo_selection_Aleatorio);
+                printf("TEMPO DO SELECTION SORT VETOR ALEATORIO: %lf\n", tempo_selection_Aleatorio);
                 printf("\n");
                 printf("-----------------------------------------------------------------");
                 printf("\n");
@@ -156,6 +158,106 @@ int main()
                 printf("Erro: o vetor não foi criado! Use a opcao 1 do menu !\n");
             }
             break;
+
+        case 3:
+            if (vetCrescente != NULL)
+            {
+                start = clock();
+                insertionSort(tamanho, vetCrescente);
+                end = clock();
+                tempo_inserction_Crescente = ((double)(end - start)) / CLOCKS_PER_SEC;
+                /*for (int i = 0; i < tamanho; i++)
+                {
+                    printf("%d\n", vetCrescente[i]);
+                }*/
+                printf("\n");
+                printf("-----------------------------------------------------------------");
+                printf("\n");
+                printf("\n");
+                printf("TEMPO DO INSERTION SORT VETOR CRESCENTE ORDENADO: %lf\n", tempo_inserction_Crescente);
+                printf("\n");
+                printf("-----------------------------------------------------------------");
+                printf("\n");
+                printf("\n");
+            }
+            else
+            {
+                printf("Erro: o vetor não foi criado! Use a opcao 1 do menu !\n");
+            }
+            if (vetDecrescente != NULL)
+            {
+                start = clock();
+                insertionSort(tamanho, vetDecrescente);
+                end = clock();
+                tempo_insertion_Decrescente = ((double)(end - start)) / CLOCKS_PER_SEC;
+                /*for (int i = 0; i < tamanho; i++)
+                {
+                    printf("%d\n", vetDecrescente[i]);
+                }*/
+                printf("\n");
+                printf("-----------------------------------------------------------------");
+                printf("\n");
+                printf("\n");
+                printf("TEMPO DO INSERTION SORT VETOR DECRESCENTE ORDENADO: %lf\n", tempo_insertion_Decrescente);
+                printf("\n");
+                printf("-----------------------------------------------------------------");
+                printf("\n");
+                printf("\n");
+            }
+            else
+            {
+                printf("Erro: o vetor não foi criado! Use a opcao 1 do menu !\n");
+            }
+            if (vetDesordenado != NULL)
+            {
+                start = clock();
+                insertionSort(tamanho, vetDesordenado);
+                end = clock();
+                tempo_insertion_Desordenado = ((double)(end - start)) / CLOCKS_PER_SEC;
+                /*for (int i = 0; i < tamanho; i++)
+                {
+                    printf("%d\n", vetDesordenado[i]);
+                }*/
+                printf("\n");
+                printf("-----------------------------------------------------------------");
+                printf("\n");
+                printf("\n");
+                printf("TEMPO DO INSERTION SORT VETOR LEVEMENTE DESORDENADO: %lf\n", tempo_insertion_Desordenado);
+                printf("\n");
+                printf("-----------------------------------------------------------------");
+                printf("\n");
+                printf("\n");
+            }
+            else
+            {
+                printf("Erro: o vetor não foi criado! Use a opcao 1 do menu !\n");
+            }
+             if (vetAleatorio != NULL)
+            {
+                start = clock();
+                insertionSort(tamanho, vetAleatorio);
+                end = clock();
+                tempo_insertion_Aleatorio = ((double)(end - start)) / CLOCKS_PER_SEC;
+               /* for (int i = 0; i < tamanho; i++)
+                {
+                    printf("%d\n", vetAleatorio[i]);
+                }*/
+                printf("\n");
+                printf("-----------------------------------------------------------------");
+                printf("\n");
+                printf("\n");
+                printf("TEMPO DO INSERTION SORT VETOR ALEATORIO: %lf\n", tempo_insertion_Aleatorio);
+                printf("\n");
+                printf("-----------------------------------------------------------------");
+                printf("\n");
+                printf("\n");
+            }
+            else
+            {
+                printf("Erro: o vetor não foi criado! Use a opcao 1 do menu !\n");
+            }
+            break;
+
         default:
             printf("Erro: sua escolha deve ser entre 0 e 4!\n");
             break;
@@ -260,5 +362,19 @@ void selectionSort(int n, int vet[])
             }
         }
         swap(&vet[min_idx], &vet[i]);
+    }
+}
+
+void insertionSort(int n, int vet[]){
+
+    int i, chave, j;
+    for(i = 1; i < n; i++){
+        chave = vet[i];
+        j = i - 1;
+        while(j >= 0 && vet[j] > chave){
+            vet[j + 1] = vet[j];
+            j = j -1;
+        }
+        vet[j + 1] = chave;
     }
 }
